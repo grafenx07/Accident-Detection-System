@@ -5,6 +5,7 @@ ultralytics>=8.0.0
 cvzone>=1.6.1
 Pillow>=10.0.0
 numpy>=1.24.0
+roboflow>=1.1.0          # dataset download & merge pipeline
 
 # Desktop GUI
 customtkinter>=5.2.0

@@ -1,6 +1,18 @@
 # Training data folders
 /freedomtech/
 /images/
+_dataset_downloads/
+runs/
+
+# Training logs/errors
+training_log.txt
+train_error.txt
+
+# Sensitive files
+api secret
+api_secret*
+*.secret
+.env*
 
 # Large model and video files
 *.pt

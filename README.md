@@ -36,7 +36,9 @@ This advanced Computer Vision system leverages YOLOv8 object detection to monito
 ### 🖥️ Desktop Application (main.py)
 
 - **Modern Dark-themed GUI** built with CustomTkinter
+- **Dashboard**: Live stats — total detections, active camera status, recent incident list
 - **Real-time video processing** with live feed display
+- **Media Upload & Analysis**: Upload images or videos for offline accident detection
 - **Configurable detection settings**:
   - Adjustable confidence threshold (0-100%)
   - Camera source selection (Webcam/External)
@@ -46,9 +48,17 @@ This advanced Computer Vision system leverages YOLOv8 object detection to monito
   - Test notification feature
   - Configurable cooldown period
 - **Camera Location Management**: Assign names to different camera feeds
-- **Evidence Storage**: Automatically saves accident frames with metadata
+- **Evidence Storage**: Automatically saves accident frames and video clips with metadata
 - **Detection History Viewer**: Browse all detected incidents with images
 - **Export Logs**: Export detection data to CSV format
+
+### 🌐 Web Application (app.py)
+
+- **Streamlit-powered web UI** — run in any browser, no installation required beyond Python
+- Upload and analyze video/image files directly from the browser
+- Adjustable confidence slider, camera location input, enable/disable notifications
+- Live detection log and statistics panel
+- Evidence saving from the browser interface
 
 ### 🧠 AI Model
 
@@ -70,8 +80,8 @@ This advanced Computer Vision system leverages YOLOv8 object detection to monito
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/Debanuj01/accident-detection-system.git
-cd accident-detection-system
+git clone https://github.com/grafenx07/Accident-Detection-System.git
+cd Accident-Detection-System
 ```
 
 ### Step 2: Create Virtual Environment
@@ -109,23 +119,31 @@ The `best.pt` file must be in the root directory before running the application.
 
 ### Desktop Application
 
-Run the main application:
-
 ```bash
 python main.py
 ```
 
 **Getting Started:**
 
-1. **Configure Detection Settings**:
-   - Navigate to "Detection Settings" tab
+1. **Dashboard**: On launch, view live detection stats and recent incidents.
+
+2. **Live Detection**:
+   - Go to "Live Detection" tab and click **▶️ Start Detection**
+   - Monitor the live camera feed in real-time
+
+3. **Media Upload** (New):
+   - Go to "Media Upload" tab
+   - Browse and select an image or video file
+   - Click **Analyze** — results and evidence are saved automatically
+
+4. **Configure Detection Settings**:
+   - Navigate to "Settings" tab
    - Adjust confidence threshold (default: 0.5)
    - Select camera source (Webcam/External)
    - Enable/disable evidence saving
 
-2. **Setup WhatsApp Notifications** (Optional):
-   - Go to "Notification Settings" tab
-   - Enable WhatsApp notifications
+5. **Setup WhatsApp Notifications** (Optional):
+   - Enable WhatsApp notifications in Settings
    - Enter your Twilio credentials:
      - Account SID
      - Auth Token
@@ -134,20 +152,24 @@ python main.py
    - Click "Save Notification Settings"
    - Test with "Test WhatsApp Notification" button
 
-3. **Configure Camera Locations**:
-   - Go to "Camera Locations" tab
-   - Assign names to your camera feeds
+6. **Configure Camera Locations**:
+   - Assign names to your camera feeds in Settings
    - Click "Save Location Settings"
 
-4. **Start Detection**:
-   - Click "▶️ Start Detection"
-   - Monitor the live feed
-   - Accidents will be automatically detected and logged
+7. **View Detection History**:
+   - Go to "History" tab to browse all detected incidents and evidence images
 
-5. **View Detection History**:
-   - Click "View Detection History"
-   - Browse all detected incidents
-   - View evidence images
+---
+
+### Web Application (Streamlit)
+
+```bash
+streamlit run app.py
+```
+
+- Opens automatically in your browser at `http://localhost:8501`
+- Use the sidebar to configure confidence, camera location, and notifications
+- Upload a video/image or start a live feed to begin detection
 
 ---
 
@@ -195,20 +217,20 @@ accident_frames_threshold = 5       # Frames to confirm accident
 ## 📁 Project Structure
 
 ```
-accident-detection-system/
+Accident-Detection-System/
 │
-├── main.py                  # Desktop application (CustomTkinter)
-├── best.pt                  # YOLOv8 trained model
-├── coco1.txt               # Class labels
-├── requirements.txt        # Python dependencies
-├── .gitignore              # Git ignore file
+├── main.py                          # Desktop application (CustomTkinter)
+├── app.py                           # Web application (Streamlit)
+├── main_backup.py                   # Backup of previous main version
+├── train.py                         # Model training script
+├── download_and_merge_datasets.py   # Dataset download & merge utility
+├── best.pt                          # YOLOv8 trained model (not in repo — download separately)
+├── coco1.txt                        # Class labels
+├── data.yaml                        # YOLO dataset configuration
+├── requirements.txt                 # Python dependencies
+├── .gitignore                       # Git ignore file
 │
-├── accident_evidence/      # Saved accident frames
-├── freedomtech/           # Training dataset
-│   ├── images/
-│   └── labels/
-│
-└── yolov8_object_detection_on_custom_dataset.ipynb  # Model training notebook
+└── accident_evidence/               # Saved accident frames/clips (generated at runtime)
 ```
 
 ---
@@ -219,7 +241,8 @@ accident-detection-system/
 
 - **ultralytics** - YOLOv8 implementation
 - **opencv-python** - Computer vision operations
-- **customtkinter** - Modern GUI framework
+- **customtkinter** - Modern GUI framework (desktop app)
+- **streamlit** - Web application framework
 - **pandas** - Data manipulation
 - **Pillow** - Image processing
 - **twilio** - WhatsApp messaging
@@ -324,7 +347,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 👥 Authors
 
-- **Debanuj** - [GitHub](https://github.com/Debanuj01)
+- **grafenx07** - [GitHub](https://github.com/grafenx07)
 
 ---
 
@@ -342,7 +365,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 For issues, questions, or suggestions:
 
 - Open an issue on GitHub
-- Contact: [GitHub Profile](https://github.com/Debanuj01)
+- Contact: [GitHub Profile](https://github.com/grafenx07)
 
 ---
 
